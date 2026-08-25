@@ -20,7 +20,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: 'Geist', 'Geist Fallback';
+  --font-sans: 'Fira Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-serif: 'DM Serif Display', 'Georgia', serif;
   --font-mono: 'Geist Mono', monospace;
 }

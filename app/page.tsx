@@ -60,7 +60,7 @@ export default function Home() {
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
               <Link href="/proyectos">
-                <Button variant="outline" className="text-white border-white/30 hover:bg-white hover:text-black w-full sm:w-auto h-12 px-8 text-base transition-colors duration-300">
+                <Button variant="outline" className="text-white border-white/30 bg-transparent hover:bg-white/10 hover:border-white/50 w-full sm:w-auto h-12 px-8 text-base transition-all duration-300">
                   Ver proyectos <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
@@ -251,15 +251,15 @@ export default function Home() {
             </h2>
           </motion.div>
           
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-4 gap-8 relative"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
             {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-8 left-12 right-12 h-0.5 bg-gray-200 z-0"></div>
+            <motion.div 
+              className="hidden md:block absolute top-8 left-12 right-12 h-0.5 bg-gradient-to-r from-[#eab308]/40 via-[#eab308] to-[#eab308]/40 z-0 origin-left"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
+            />
             
             {[
               { num: '01', title: 'Asesoría y levantamiento', desc: 'Escuchamos tus ideas, entendemos tus necesidades y tomamos medidas del espacio para un diagnóstico preciso.', icon: UserCheck },
@@ -267,16 +267,26 @@ export default function Home() {
               { num: '03', title: 'Fabricación', desc: 'Procesamos los materiales con tecnología moderna, control de calidad y atención al detalle en cada etapa.', icon: Settings },
               { num: '04', title: 'Instalación y entrega', desc: 'Instalamos con precisión y cuidado, asegurando resultados impecables y tu total satisfacción.', icon: Wrench },
             ].map((step, idx) => (
-              <motion.div key={idx} variants={fadeIn} className="relative z-10 flex flex-col items-center text-center">
-                <div className="bg-white border-2 border-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-sm">
+              <motion.div 
+                key={idx} 
+                className="relative z-10 flex flex-col items-center text-center group"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 + idx * 0.2 }}
+              >
+                <motion.div 
+                  className="bg-white border-2 border-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:shadow-[0_0_25px_rgba(234,179,8,0.3)] group-hover:border-[#eab308]/40 transition-all duration-500"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                >
                   <step.icon className="text-[#eab308] w-8 h-8" />
-                </div>
+                </motion.div>
                 <span className="text-[#eab308] font-bold mb-2">{step.num}</span>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
