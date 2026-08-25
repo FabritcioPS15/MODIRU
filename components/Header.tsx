@@ -46,12 +46,14 @@ export function Header() {
   }, [mobileOpen])
 
   return (
-    <>
+    <div className="sticky top-0 z-50 w-full">
       <header
-        className={`sticky top-0 z-50 w-full text-white border-b transition-all duration-500 ease-out ${
+        className={`w-full text-white border-b transition-all duration-500 ease-out ${
           scrolled
             ? 'border-white/10 bg-black/80 backdrop-blur-2xl shadow-lg shadow-black/20'
-            : 'border-white/5 bg-transparent backdrop-blur-sm'
+            : mobileOpen
+              ? 'border-white/10 bg-black/80 backdrop-blur-2xl'
+              : 'border-white/5 bg-[#111111]/80 backdrop-blur-sm'
         }`}
       >
         <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
@@ -86,35 +88,35 @@ export function Header() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden fixed top-20 left-0 right-0 z-40 bg-black/80 backdrop-blur-2xl border-b border-white/10 overflow-hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="md:hidden w-full bg-[#111111]/95 backdrop-blur-2xl border-b border-white/10"
           >
-            <nav className="flex flex-col items-center gap-1 py-6 px-4">
+            <nav className="flex flex-col items-center gap-1 py-4 px-4 container mx-auto">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.2 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.04, duration: 0.2 }}
                   className="w-full"
                 >
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center text-white/80 hover:text-[#eab308] text-lg font-medium py-3 rounded-lg hover:bg-white/5 transition-all duration-300"
+                    className="flex items-center text-white/80 hover:text-[#eab308] hover:bg-white/5 text-base font-medium py-3 px-4 rounded-lg transition-all duration-300"
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
               <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.05, duration: 0.2 }}
-                className="flex flex-col gap-3 w-full mt-4 pt-4 border-t border-white/10"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.04, duration: 0.2 }}
+                className="flex flex-col gap-3 w-full mt-3 pt-3 border-t border-white/10"
               >
                 <Link
                   href="/proyectos"
@@ -135,6 +137,6 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   )
 }
