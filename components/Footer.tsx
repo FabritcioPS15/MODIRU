@@ -29,24 +29,24 @@ export function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-[#eab308] font-semibold mb-4 text-sm tracking-wider uppercase">Contáctanos</h3>
             <ul className="space-y-3 text-sm">
-              <li className="flex gap-3">
-                <span className="text-[#eab308] font-semibold w-24">WhatsApp:</span>
+              <li className="flex flex-col sm:flex-row sm:gap-3">
+                <span className="text-[#eab308] font-semibold sm:w-24">WhatsApp:</span>
                 <span>+51 987 654 321</span>
               </li>
-              <li className="flex gap-3">
-                <span className="text-[#eab308] font-semibold w-24">Teléfono:</span>
+              <li className="flex flex-col sm:flex-row sm:gap-3">
+                <span className="text-[#eab308] font-semibold sm:w-24">Teléfono:</span>
                 <span>(01) 234 5678</span>
               </li>
-              <li className="flex gap-3">
-                <span className="text-[#eab308] font-semibold w-24">Correo:</span>
+              <li className="flex flex-col sm:flex-row sm:gap-3">
+                <span className="text-[#eab308] font-semibold sm:w-24">Correo:</span>
                 <span>hola@modiru.pe</span>
               </li>
-              <li className="flex gap-3">
-                <span className="text-[#eab308] font-semibold w-24">Dirección:</span>
+              <li className="flex flex-col sm:flex-row sm:gap-3">
+                <span className="text-[#eab308] font-semibold sm:w-24">Dirección:</span>
                 <span>Av. Javier Prado Este 1234, San Isidro, Lima, Perú</span>
               </li>
-              <li className="flex gap-3 mt-4">
-                <span className="text-[#eab308] font-semibold w-24">Horario de atención:</span>
+              <li className="flex flex-col sm:flex-row sm:gap-3 mt-4">
+                <span className="text-[#eab308] font-semibold sm:w-24">Horario:</span>
                 <div>
                   <p>Lunes a Viernes: 9:00 am – 6:00 pm</p>
                   <p>Sábados: 9:00 am – 1:00 pm</p>

@@ -50,7 +50,7 @@ export default function Home() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
               Mobiliario a medida<br />
               que transforma<br />
               <span className="text-[#eab308]">tus espacios</span>
@@ -139,7 +139,7 @@ export default function Home() {
           />
         </motion.div>
         <motion.div 
-          className="w-full lg:w-1/2 bg-[#1A1A1A] text-white p-12 lg:p-24 flex flex-col justify-center"
+          className="w-full lg:w-1/2 bg-[#1A1A1A] text-white p-8 lg:p-24 flex flex-col justify-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}

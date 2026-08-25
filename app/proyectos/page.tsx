@@ -51,7 +51,7 @@ export default function Proyectos() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row bg-[#111111]">
-        <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center text-white">
+        <div className="w-full lg:w-1/2 p-8 lg:p-24 flex flex-col justify-center text-white">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -167,7 +167,7 @@ export default function Proyectos() {
             className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
-        <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center text-white">
+        <div className="w-full lg:w-1/2 p-8 lg:p-24 flex flex-col justify-center text-white">
           <motion.div
             initial="hidden"
             whileInView="visible"

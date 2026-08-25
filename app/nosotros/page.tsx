@@ -48,7 +48,7 @@ export default function Nosotros() {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
               Pasión por la <br />
               <span className="text-[#eab308]">madera y el diseño</span>
             </motion.h1>

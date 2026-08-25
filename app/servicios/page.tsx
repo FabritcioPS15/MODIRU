@@ -76,7 +76,7 @@ export default function Servicios() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row bg-[#111111]">
-        <div className="w-full lg:w-[45%] p-12 lg:p-20 xl:p-24 flex flex-col justify-center text-white">
+        <div className="w-full lg:w-[45%] p-8 lg:p-20 xl:p-24 flex flex-col justify-center text-white">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
