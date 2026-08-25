@@ -1,68 +1,348 @@
 'use client'
 
-import { useState } from 'react'
-import { ArrowUpRight, Menu, X, Camera, Phone, Mail, MapPin } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { motion } from 'framer-motion'
+import { 
+  PenTool, 
+  Settings, 
+  Wrench,
+  UserCheck,
+  Star,
+  CheckCircle2,
+  ArrowRight
+} from 'lucide-react'
 
-const projects = [
-  { title: 'Cocina Línea', category: 'Cocinas integrales', image: '/modiru-showroom.png', className: 'md:col-span-7' },
-  { title: 'Vestidor Nido', category: 'Dormitorios', image: '/modiru-showroom.png', className: 'md:col-span-5 md:mt-24' },
-  { title: 'Estudio Abierto', category: 'Home office', image: '/modiru-showroom.png', className: 'md:col-span-5', position: 'object-[70%_60%]' },
-  { title: 'Módulo Ocre', category: 'Mobiliario a medida', image: '/modiru-showroom.png', className: 'md:col-span-7 md:mt-24', position: 'object-[30%_70%]' },
-]
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+}
 
-export default function Page() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [sent, setSent] = useState(false)
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+}
 
+export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden">
-      <header className="absolute inset-x-0 top-0 z-30 px-6 py-6 md:px-12 md:py-8">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between">
-          <a href="#inicio" className="font-serif text-2xl tracking-[-0.06em] text-primary md:text-3xl">modiru<span className="text-accent">.</span></a>
-          <nav className="hidden items-center gap-10 text-xs uppercase tracking-[0.18em] text-primary/75 md:flex">
-            <a href="#proyectos" className="transition-colors hover:text-accent">Proyectos</a>
-            <a href="#servicios" className="transition-colors hover:text-accent">Servicios</a>
-            <a href="#estudio" className="transition-colors hover:text-accent">El estudio</a>
-            <a href="#contacto" className="rounded-full border border-primary px-5 py-3 transition-colors hover:bg-primary hover:text-primary-foreground">Hablemos</a>
-          </nav>
-          <button aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-[#111111] text-white py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10" />
+          <img 
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" 
+            alt="Cocina moderna" 
+            className="w-full h-full object-cover"
+          />
         </div>
-        {menuOpen && <nav className="mt-5 flex flex-col gap-5 border-t border-primary/15 bg-background px-2 pb-4 pt-6 text-sm uppercase tracking-widest md:hidden"><a href="#proyectos" onClick={() => setMenuOpen(false)}>Proyectos</a><a href="#servicios" onClick={() => setMenuOpen(false)}>Servicios</a><a href="#estudio" onClick={() => setMenuOpen(false)}>El estudio</a><a href="#contacto" onClick={() => setMenuOpen(false)}>Hablemos</a></nav>}
-      </header>
-
-      <section id="inicio" className="relative flex min-h-[720px] items-end bg-secondary px-6 pb-14 pt-36 md:min-h-[820px] md:px-12 md:pb-20">
-        <div className="mx-auto grid w-full max-w-[1400px] gap-12 md:grid-cols-[1.05fr_0.95fr] md:items-end">
-          <div>
-            <p className="mb-8 text-xs uppercase tracking-[0.22em] text-accent">Diseño & fabricación a medida</p>
-            <h1 className="max-w-3xl font-serif text-6xl leading-[0.92] tracking-[-0.065em] text-primary md:text-8xl lg:text-[9.5rem]">Diseñalos.<br /><span className="text-accent">Transformamos</span><br />tus espacios.</h1>
-          </div>
-          <div className="flex flex-col gap-7 md:mb-2 md:max-w-sm md:justify-self-end">
-            <p className="text-base leading-7 text-primary/70 md:text-lg">Mobiliario en melamina que convierte tus ideas en lugares para vivir mejor. Pensado para ti, construido para durar.</p>
-            <a href="#contacto" className="group flex w-fit items-center gap-3 border-b border-primary pb-2 text-sm uppercase tracking-[0.16em] text-primary">Cuéntanos tu idea <ArrowUpRight size={17} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></a>
-          </div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-20">
+          <motion.div 
+            className="max-w-2xl"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.h1 variants={fadeIn} className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+              Mobiliario a medida<br />
+              que transforma<br />
+              <span className="text-[#eab308]">tus espacios</span>
+            </motion.h1>
+            <motion.p variants={fadeIn} className="text-lg md:text-xl text-white/80 mb-10 max-w-lg">
+              Diseñamos, fabricamos e instalamos muebles en madera y melamina para hogares, oficinas y negocios.
+            </motion.p>
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
+              <Link href="/proyectos">
+                <Button variant="outline" className="text-white border-white/30 hover:bg-white hover:text-black w-full sm:w-auto h-12 px-8 text-base transition-colors duration-300">
+                  Ver proyectos <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href="/contacto">
+                <Button className="bg-[#eab308] text-black hover:bg-[#d9a05b] border-none w-full sm:w-auto h-12 px-8 text-base font-semibold transition-colors duration-300">
+                  Cotizar ahora <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      <section id="servicios" className="bg-primary px-6 py-24 text-primary-foreground md:px-12 md:py-32">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end"><p className="text-xs uppercase tracking-[0.22em] text-accent">Lo que hacemos</p><p className="max-w-md text-lg leading-7 text-primary-foreground/65">Diseñamos con intención. Fabricamos con precisión. Instalamos para que todo encaje.</p></div>
-          <div className="grid gap-px border-y border-primary-foreground/20 md:grid-cols-3">
-            {[['01', 'Cocinas', 'El centro de tu casa, diseñado alrededor de tu forma de vivir.'], ['02', 'Dormitorios', 'Armarios y vestidores que hacen espacio para lo que importa.'], ['03', 'Ambientes', 'Muebles que ordenan, definen y le dan carácter a cada rincón.']].map(([n, title, desc]) => <article key={n} className="border-b border-primary-foreground/20 py-8 md:border-b-0 md:border-r md:px-8 md:py-12 md:first:pl-0 md:last:border-r-0"><span className="font-mono text-xs text-accent">{n}</span><h2 className="mt-12 font-serif text-4xl tracking-[-0.04em]">{title}</h2><p className="mt-5 max-w-xs text-sm leading-6 text-primary-foreground/60">{desc}</p></article>)}
-          </div>
+      {/* Features Section */}
+      <section className="bg-gray-50 py-16 md:py-24">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeIn} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex gap-6 hover:shadow-md transition-shadow duration-300">
+              <div className="bg-[#111111] w-14 h-14 rounded-lg flex items-center justify-center shrink-0">
+                <PenTool className="text-[#eab308] w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Diseño</h3>
+                <p className="text-gray-600">
+                  Escuchamos tus ideas y las convertimos en diseños 3D funcionales y estéticos que se adaptan a tu espacio y estilo.
+                </p>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={fadeIn} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex gap-6 hover:shadow-md transition-shadow duration-300">
+              <div className="bg-[#111111] w-14 h-14 rounded-lg flex items-center justify-center shrink-0">
+                <Settings className="text-[#eab308] w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Fabricación</h3>
+                <p className="text-gray-600">
+                  Utilizamos materiales de alta calidad y tecnología moderna para garantizar durabilidad, precisión y un acabado impecable.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex gap-6 hover:shadow-md transition-shadow duration-300">
+              <div className="bg-[#111111] w-14 h-14 rounded-lg flex items-center justify-center shrink-0">
+                <Wrench className="text-[#eab308] w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Instalación</h3>
+                <p className="text-gray-600">
+                  Nuestro equipo profesional asegura una instalación limpia, segura y en el tiempo acordado, cuidando cada detalle.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      <section id="proyectos" className="bg-background px-6 py-24 md:px-12 md:py-32">
-        <div className="mx-auto max-w-[1400px]"><div className="mb-16 flex items-end justify-between"><div><p className="mb-5 text-xs uppercase tracking-[0.22em] text-accent">Una muestra de nuestro trabajo</p><h2 className="font-serif text-5xl tracking-[-0.06em] md:text-7xl">Espacios con<br /><i className="text-accent">intención.</i></h2></div><span className="hidden text-xs uppercase tracking-widest text-muted-foreground md:block">[ 04 proyectos ]</span></div><div className="grid gap-x-6 gap-y-16 md:grid-cols-12">{projects.map((project) => <a href="#contacto" key={project.title} className={`group ${project.className}`}><div className="aspect-[4/3] overflow-hidden bg-muted"><img src={project.image} alt={project.title} className={`h-full w-full object-cover grayscale-[15%] transition-transform duration-700 group-hover:scale-105 ${project.position ?? ''}`} /></div><div className="mt-5 flex items-start justify-between"><div><h3 className="font-serif text-2xl tracking-[-0.04em]">{project.title}</h3><p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{project.category}</p></div><ArrowUpRight className="text-accent transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div></a>)}</div></div>
+      {/* Philosophy Section */}
+      <section className="flex flex-col lg:flex-row overflow-hidden">
+        <motion.div 
+          className="w-full lg:w-1/2 min-h-[400px] lg:min-h-[600px] relative"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1581428982868-e410dd047a90?q=80&w=2070&auto=format&fit=crop" 
+            alt="Taller de carpintería" 
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </motion.div>
+        <motion.div 
+          className="w-full lg:w-1/2 bg-[#1A1A1A] text-white p-12 lg:p-24 flex flex-col justify-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.span variants={fadeIn} className="text-[#eab308] font-bold text-sm tracking-widest uppercase mb-4 block">NOSOTROS</motion.span>
+          <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            Creamos espacios funcionales con diseño y precisión
+          </motion.h2>
+          <motion.p variants={fadeIn} className="text-white/70 mb-12 text-lg">
+            En MODIRU diseñamos, fabricamos e instalamos mobiliario a medida en madera y melamina para hogares, oficinas y negocios.
+            Combinamos creatividad, experiencia y atención al detalle para ofrecer soluciones que transforman espacios.
+          </motion.p>
+          
+          <motion.div variants={fadeIn} className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+            <div>
+              <UserCheck className="text-[#eab308] w-8 h-8 mb-4" />
+              <h4 className="font-bold text-lg mb-2">Atención personalizada</h4>
+              <p className="text-white/60 text-sm">Te acompañamos en cada etapa de tu proyecto.</p>
+            </div>
+            <div>
+              <Star className="text-[#eab308] w-8 h-8 mb-4" />
+              <h4 className="font-bold text-lg mb-2">Materiales de calidad</h4>
+              <p className="text-white/60 text-sm">Trabajamos con maderas y herrajes de primera.</p>
+            </div>
+            <div>
+              <CheckCircle2 className="text-[#eab308] w-8 h-8 mb-4" />
+              <h4 className="font-bold text-lg mb-2">Acabados profesionales</h4>
+              <p className="text-white/60 text-sm">Cuidado en cada detalle para resultados impecables.</p>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={fadeIn}>
+            <Link href="/nosotros">
+              <Button className="bg-[#eab308] text-black hover:bg-[#d9a05b] border-none font-semibold px-8 h-12 transition-colors duration-300">
+                Conócenos <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
 
-      <section id="estudio" className="bg-accent px-6 py-24 text-accent-foreground md:px-12 md:py-32"><div className="mx-auto grid max-w-[1400px] gap-14 md:grid-cols-2 md:items-center"><p className="text-xs uppercase tracking-[0.22em]">El estudio / 2026</p><div><h2 className="font-serif text-5xl leading-[0.95] tracking-[-0.06em] md:text-7xl">Tu espacio<br />empieza con<br /><i>una conversación.</i></h2><p className="mt-8 max-w-md text-base leading-7 text-accent-foreground/75">Somos un estudio de diseño y fabricación de mobiliario en melamina. Escuchamos cómo vives para crear piezas que se sientan realmente tuyas.</p></div></div></section>
+      {/* Projects Showcase */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div 
+            className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <div>
+              <span className="text-[#eab308] font-bold text-sm tracking-widest uppercase mb-4 block">PROYECTOS DESTACADOS</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                Mobiliario a medida que habla por nosotros
+              </h2>
+            </div>
+            <Link href="/proyectos" className="text-gray-900 font-semibold flex items-center hover:text-[#eab308] transition-colors whitespace-nowrap">
+              Ver todos los proyectos <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {[
+              { img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop", title: "Cocina moderna" },
+              { img: "https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=2072&auto=format&fit=crop", title: "Clóset a medida" },
+              { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop", title: "Oficina funcional" }
+            ].map((proj, i) => (
+              <motion.div key={i} variants={fadeIn} className="group cursor-pointer">
+                <div className="overflow-hidden rounded-xl mb-4 aspect-[4/3]">
+                  <img 
+                    src={proj.img} 
+                    alt={proj.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex justify-between items-center">
+                  <h3 className="font-bold text-xl text-gray-900">{proj.title}</h3>
+                  <span className="text-[#eab308] flex items-center text-sm font-medium opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                    Ver proyecto <ArrowRight className="ml-1 w-4 h-4" />
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-      <section id="contacto" className="bg-secondary px-6 py-24 md:px-12 md:py-32"><div className="mx-auto grid max-w-[1400px] gap-16 md:grid-cols-[1fr_0.75fr]"><div><p className="mb-6 text-xs uppercase tracking-[0.22em] text-accent">Comencemos</p><h2 className="max-w-xl font-serif text-6xl leading-[0.94] tracking-[-0.06em] md:text-8xl">Hagamos<br /><i>algo tuyo.</i></h2><div className="mt-12 flex flex-col gap-3 text-sm text-primary/70"><a href="mailto:hola@modiru.com" className="flex items-center gap-3 hover:text-accent"><Mail size={16} /> hola@modiru.com</a><a href="tel:+51999999999" className="flex items-center gap-3 hover:text-accent"><Phone size={16} /> +51 999 999 999</a><span className="flex items-center gap-3"><MapPin size={16} /> Lima, Perú</span></div></div><form onSubmit={(e) => { e.preventDefault(); setSent(true) }} className="flex flex-col gap-6"><label className="text-xs uppercase tracking-widest text-primary/60">Tu nombre<input required className="mt-3 w-full border-b border-primary/30 bg-transparent py-3 outline-none placeholder:text-primary/35 focus:border-accent" placeholder="¿Cómo te llamamos?" /></label><label className="text-xs uppercase tracking-widest text-primary/60">Tu correo<input required type="email" className="mt-3 w-full border-b border-primary/30 bg-transparent py-3 outline-none placeholder:text-primary/35 focus:border-accent" placeholder="hola@ejemplo.com" /></label><label className="text-xs uppercase tracking-widest text-primary/60">Cuéntanos sobre tu proyecto<textarea required rows={3} className="mt-3 w-full resize-none border-b border-primary/30 bg-transparent py-3 outline-none placeholder:text-primary/35 focus:border-accent" placeholder="Quiero transformar..." /></label><button type="submit" className="mt-3 flex w-fit items-center gap-3 bg-primary px-6 py-4 text-xs uppercase tracking-widest text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground">{sent ? 'Mensaje enviado' : 'Enviar mensaje'} <ArrowUpRight size={16} /></button></form></div></section>
+      {/* Process Section */}
+      <section className="py-20 md:py-32 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <span className="text-[#eab308] font-bold text-sm tracking-widest uppercase mb-4 block">CÓMO TRABAJAMOS</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Nuestro proceso
+            </h2>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-4 gap-8 relative"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-8 left-12 right-12 h-0.5 bg-gray-200 z-0"></div>
+            
+            {[
+              { num: '01', title: 'Asesoría y levantamiento', desc: 'Escuchamos tus ideas, entendemos tus necesidades y tomamos medidas del espacio para un diagnóstico preciso.', icon: UserCheck },
+              { num: '02', title: 'Diseño y propuesta', desc: 'Desarrollamos una propuesta 3D y seleccionamos materiales, acabados y herrajes ideales para tu proyecto.', icon: PenTool },
+              { num: '03', title: 'Fabricación', desc: 'Procesamos los materiales con tecnología moderna, control de calidad y atención al detalle en cada etapa.', icon: Settings },
+              { num: '04', title: 'Instalación y entrega', desc: 'Instalamos con precisión y cuidado, asegurando resultados impecables y tu total satisfacción.', icon: Wrench },
+            ].map((step, idx) => (
+              <motion.div key={idx} variants={fadeIn} className="relative z-10 flex flex-col items-center text-center">
+                <div className="bg-white border-2 border-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                  <step.icon className="text-[#eab308] w-8 h-8" />
+                </div>
+                <span className="text-[#eab308] font-bold mb-2">{step.num}</span>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-      <footer className="flex flex-col gap-8 bg-primary px-6 py-8 text-primary-foreground md:flex-row md:items-center md:justify-between md:px-12"><a href="#inicio" className="font-serif text-2xl tracking-[-0.06em]">modiru<span className="text-accent">.</span></a><p className="text-xs text-primary-foreground/50">Diseñalos y transformamos tus espacios.</p><a href="https://instagram.com" aria-label="Instagram de Modiru" className="text-primary-foreground/60 hover:text-accent"><Camera size={19} /></a></footer>
-    </main>
+      {/* Testimonials */}
+      <section className="py-20 md:py-32 bg-[#111111] text-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div 
+            className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <div>
+              <span className="text-[#eab308] font-bold text-sm tracking-widest uppercase mb-4 block">TESTIMONIOS</span>
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Lo que dicen nuestros clientes
+              </h2>
+            </div>
+            <Link href="/proyectos" className="text-[#eab308] font-semibold flex items-center hover:text-white transition-colors">
+              Ver más reseñas <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {[
+              {
+                text: "Quedamos encantados con el resultado. Entendieron perfectamente lo que queríamos y los acabados son de primer nivel. 100% recomendados.",
+                author: "Maria Fernanda R.",
+                location: "Miraflores, Lima"
+              },
+              {
+                text: "Cumplieron los plazos prometidos y el proyecto fue muy ordenado. El clóset quedó perfecto y la instalación fue impecable.",
+                author: "Carlos A.",
+                location: "San Isidro, Lima"
+              },
+              {
+                text: "Se nota la calidad de los materiales y el detalle en cada acabado. Volveré a trabajar con ellos sin dudarlo.",
+                author: "Patricia M.",
+                location: "La Molina, Lima"
+              }
+            ].map((test, idx) => (
+              <motion.div key={idx} variants={fadeIn} className="bg-[#1A1A1A] border border-white/10 p-8 rounded-2xl relative">
+                <div className="text-[#eab308] absolute top-8 right-8 text-6xl font-serif leading-none opacity-20">"</div>
+                <div className="flex text-[#eab308] mb-6">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+                </div>
+                <p className="text-white/80 mb-8 relative z-10 leading-relaxed">
+                  {test.text}
+                </p>
+                <div>
+                  <p className="font-bold">{test.author}</p>
+                  <p className="text-white/50 text-sm">{test.location}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+    </div>
   )
 }
+
