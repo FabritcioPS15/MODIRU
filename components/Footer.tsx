@@ -19,9 +19,7 @@ export function Footer() {
             <h3 className="text-[#eab308] font-semibold mb-4 text-sm tracking-wider uppercase">Enlaces rápidos</h3>
             <ul className="space-y-3 text-sm">
               <li><Link href="/" className="hover:text-[#eab308] transition-colors flex items-center gap-2"><span className="text-[#eab308]">&gt;</span> Inicio</Link></li>
-              <li><Link href="/nosotros" className="hover:text-[#eab308] transition-colors flex items-center gap-2"><span className="text-[#eab308]">&gt;</span> Nosotros</Link></li>
               <li><Link href="/servicios" className="hover:text-[#eab308] transition-colors flex items-center gap-2"><span className="text-[#eab308]">&gt;</span> Servicios</Link></li>
-              <li><Link href="/proyectos" className="hover:text-[#eab308] transition-colors flex items-center gap-2"><span className="text-[#eab308]">&gt;</span> Proyectos</Link></li>
               <li><Link href="/contacto" className="hover:text-[#eab308] transition-colors flex items-center gap-2"><span className="text-[#eab308]">&gt;</span> Contacto</Link></li>
             </ul>
           </div>

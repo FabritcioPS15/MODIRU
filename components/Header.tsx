@@ -7,9 +7,7 @@ import { ArrowRight, Menu, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Inicio' },
-  { href: '/nosotros', label: 'Nosotros' },
   { href: '/servicios', label: 'Servicios' },
-  { href: '/proyectos', label: 'Proyectos' },
   { href: '/contacto', label: 'Contacto' },
 ]
 
@@ -66,9 +64,6 @@ export function Header() {
             ))}
           </nav>
           <div className="hidden md:flex items-center gap-3">
-            <Link href="/proyectos" className="inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white border border-white/20 hover:border-[#eab308]/50 bg-white/5 hover:bg-[#eab308]/10 px-5 py-2 rounded-lg transition-all duration-300">
-              Ver proyectos <ArrowRight className="w-4 h-4" />
-            </Link>
             <Link href="/contacto">
               <button className="bg-gradient-to-r from-[#eab308] to-[#f59e0b] text-black font-semibold px-6 py-2 rounded-lg inline-flex items-center gap-2 shadow-[0_0_20px_rgba(234,179,8,0.25)] hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] hover:scale-105 transition-all duration-300">
                 Cotizar ahora <ArrowRight className="w-4 h-4" />
@@ -118,13 +113,6 @@ export function Header() {
                 transition={{ delay: navLinks.length * 0.04, duration: 0.2 }}
                 className="flex flex-col gap-3 w-full mt-3 pt-3 border-t border-white/10"
               >
-                <Link
-                  href="/proyectos"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 text-sm font-medium text-white/80 hover:text-white border border-white/20 hover:border-[#eab308]/50 bg-white/5 hover:bg-[#eab308]/10 px-5 py-3 rounded-lg transition-all duration-300"
-                >
-                  Ver proyectos <ArrowRight className="w-4 h-4" />
-                </Link>
                 <Link
                   href="/contacto"
                   onClick={() => setMobileOpen(false)}
