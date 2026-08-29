@@ -59,11 +59,6 @@ export default function Home() {
               Diseñamos, fabricamos e instalamos muebles en madera y melamina para hogares, oficinas y negocios.
             </motion.p>
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
-              <Link href="/proyectos">
-                <Button variant="outline" className="text-white border-white/30 bg-transparent hover:bg-white/10 hover:border-white/50 w-full sm:w-auto h-12 px-8 text-base transition-all duration-300">
-                  Ver proyectos <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
               <Link href="/contacto">
                 <Button className="bg-[#eab308] text-black hover:bg-[#d9a05b] border-none w-full sm:w-auto h-12 px-8 text-base font-semibold transition-colors duration-300">
                   Cotizar ahora <ArrowRight className="ml-2 w-4 h-4" />
@@ -182,59 +177,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Projects Showcase */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-          >
-            <div>
-              <span className="text-[#eab308] font-bold text-sm tracking-widest uppercase mb-4 block">PROYECTOS DESTACADOS</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
-                Mobiliario a medida que habla por nosotros
-              </h2>
-            </div>
-            <Link href="/proyectos" className="text-gray-900 font-semibold flex items-center hover:text-[#eab308] transition-colors whitespace-nowrap">
-              Ver todos los proyectos <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </motion.div>
-          
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            {[
-              { img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop", title: "Cocina moderna" },
-              { img: "https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=2072&auto=format&fit=crop", title: "Clóset a medida" },
-              { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop", title: "Oficina funcional" }
-            ].map((proj, i) => (
-              <motion.div key={i} variants={fadeIn} className="group cursor-pointer">
-                <div className="overflow-hidden rounded-xl mb-4 aspect-[4/3]">
-                  <img 
-                    src={proj.img} 
-                    alt={proj.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex justify-between items-center">
-                  <h3 className="font-bold text-xl text-gray-900">{proj.title}</h3>
-                  <span className="text-[#eab308] flex items-center text-sm font-medium opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                    Ver proyecto <ArrowRight className="ml-1 w-4 h-4" />
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Process Section */}
       <section className="py-20 md:py-32 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
@@ -306,9 +248,6 @@ export default function Home() {
                 Lo que dicen nuestros clientes
               </h2>
             </div>
-            <Link href="/proyectos" className="text-[#eab308] font-semibold flex items-center hover:text-white transition-colors">
-              Ver más reseñas <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
           </motion.div>
           
           <motion.div 

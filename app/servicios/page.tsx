@@ -37,37 +37,43 @@ const services = [
     icon: Monitor,
     title: 'Diseño y propuesta 3D',
     desc: 'Desarrollo de propuestas personalizadas con visualizaciones 3D para que veas tu proyecto antes de hacerlo realidad.',
-    img: 'https://images.unsplash.com/photo-1542621323-220536c11db8?q=80&w=2074&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1542621323-220536c11db8?q=80&w=2074&auto=format&fit=crop',
+    href: '/servicios/diseno-y-propuesta-3d'
   },
   {
     icon: LayoutGrid,
     title: 'Cocinas a medida',
     desc: 'Cocinas funcionales y elegantes diseñadas a tu medida, con acabados de alta calidad y distribución inteligente.',
-    img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop',
+    href: '/servicios/cocinas-a-medida'
   },
   {
     icon: Shirt,
     title: 'Clósets y vestidores',
     desc: 'Soluciones de almacenamiento a medida que combinan diseño, funcionalidad y aprovechamiento máximo del espacio.',
-    img: 'https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=2072&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=2072&auto=format&fit=crop',
+    href: '/servicios/closets-y-vestidores'
   },
   {
     icon: Armchair,
     title: 'Mobiliario para oficinas',
     desc: 'Mobiliario ergonómico y moderno para oficinas que impulsa la productividad y refleja la identidad de tu empresa.',
-    img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
+    href: '/servicios/mobiliario-para-oficinas'
   },
   {
     icon: Store,
     title: 'Muebles comerciales',
     desc: 'Diseñamos y fabricamos mobiliario comercial que potencia la experiencia de tus clientes y tu marca.',
-    img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070&auto=format&fit=crop',
+    href: '/servicios/muebles-comerciales'
   },
   {
     icon: Wrench,
     title: 'Fabricación e instalación',
     desc: 'Fabricación con precisión e instalación profesional para garantizar un resultado impecable y duradero.',
-    img: 'https://images.unsplash.com/photo-1581428982868-e410dd047a90?q=80&w=2070&auto=format&fit=crop'
+    img: 'https://images.unsplash.com/photo-1581428982868-e410dd047a90?q=80&w=2070&auto=format&fit=crop',
+    href: '/servicios/fabricacion-e-instalacion'
   }
 ]
 
@@ -95,23 +101,18 @@ export default function Servicios() {
           >
             En MODIRU ofrecemos soluciones integrales de mobiliario a medida en madera y melamina para hogares, oficinas y espacios comerciales. Diseño, calidad y precisión en cada detalle.
           </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Link href="/proyectos">
-              <Button variant="outline" className="text-[#eab308] border-[#eab308] hover:bg-[#eab308] hover:text-black w-full sm:w-auto h-12 px-8 text-base font-semibold transition-colors">
-                Ver proyectos <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="/contacto">
-              <Button className="bg-[#eab308] text-black hover:bg-[#d9a05b] border-none w-full sm:w-auto h-12 px-8 text-base font-semibold transition-colors">
-                Cotizar ahora <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Link href="/contacto">
+                <Button className="bg-[#eab308] text-black hover:bg-[#d9a05b] border-none w-full sm:w-auto h-12 px-8 text-base font-semibold transition-colors">
+                  Cotizar ahora <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </motion.div>
         </div>
         <div className="w-full lg:w-[55%] min-h-[400px] lg:min-h-[600px] relative">
           <motion.img 
@@ -147,23 +148,28 @@ export default function Servicios() {
           >
             {services.map((service, i) => (
               <motion.div key={i} variants={fadeIn} className="group">
-                <div className="relative mb-6">
-                  <div className="overflow-hidden rounded-xl aspect-[4/3]">
-                    <img 
-                      src={service.img} 
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                <Link href={service.href}>
+                  <div className="relative mb-6">
+                    <div className="overflow-hidden rounded-xl aspect-[4/3]">
+                      <img 
+                        src={service.img} 
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                    {/* Floating Icon Box */}
+                    <div className="absolute -bottom-5 left-6 bg-[#111111] w-12 h-12 rounded-lg flex items-center justify-center shadow-lg border border-white/10">
+                      <service.icon className="text-[#eab308] w-6 h-6" />
+                    </div>
                   </div>
-                  {/* Floating Icon Box */}
-                  <div className="absolute -bottom-5 left-6 bg-[#111111] w-12 h-12 rounded-lg flex items-center justify-center shadow-lg border border-white/10">
-                    <service.icon className="text-[#eab308] w-6 h-6" />
+                  <div className="mt-8">
+                    <h3 className="font-bold text-xl text-gray-900 mb-3 group-hover:text-[#d9a05b] transition-colors">{service.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{service.desc}</p>
+                    <span className="inline-flex items-center gap-2 mt-4 text-[#eab308] font-semibold text-sm">
+                      Ver más <ArrowRight className="w-4 h-4" />
+                    </span>
                   </div>
-                </div>
-                <div className="mt-8">
-                  <h3 className="font-bold text-xl text-gray-900 mb-3">{service.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{service.desc}</p>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
@@ -218,49 +224,6 @@ export default function Servicios() {
         </div>
       </section>
 
-      {/* Related Projects */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Proyectos relacionados
-            </h2>
-            <Link href="/proyectos" className="text-[#eab308] font-semibold flex items-center hover:text-[#d9a05b] transition-colors whitespace-nowrap">
-              Ver todos los proyectos <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </div>
-          
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            {[
-              { img: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop", title: "Cocina moderna" },
-              { img: "https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=2072&auto=format&fit=crop", title: "Clóset funcional" },
-              { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop", title: "Oficina ejecutiva" }
-            ].map((proj, i) => (
-              <motion.div key={i} variants={fadeIn} className="group cursor-pointer">
-                <div className="overflow-hidden rounded-xl mb-4 aspect-[21/9] md:aspect-[4/3] lg:aspect-[21/9]">
-                  <img 
-                    src={proj.img} 
-                    alt={proj.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex justify-between items-center">
-                  <h3 className="font-bold text-lg text-gray-900">{proj.title}</h3>
-                  <span className="text-[#eab308] flex items-center text-sm font-medium opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                    Ver proyecto <ArrowRight className="ml-1 w-4 h-4" />
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
     </div>
   )
 }
